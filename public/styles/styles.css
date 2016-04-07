@@ -1,0 +1,39 @@
+h1 {
+  text-align: center;
+}
+.top {
+  height: 100%;
+  border-style: none;
+  background-color: white;
+  opacity: 50%;
+}
+.test {
+  border-style: none;
+  height: 500px;
+}
+.map {
+  border-style: none;
+  height: 500px;
+  width: 800px;
+  float: left;
+  margin-left: 100px;
+  margin-top: 50px;
+}
+.list {
+  border-style: dotted;
+  height: 500px;
+  float: right;
+  width: 300px;
+  margin-right: 100px;
+  margin-top: 50px;
+}
+.pure-button {
+  margin-right: 100px;
+  margin-top: 50px;
+  position: relative;;
+  top: 80%;
+  margin-right: 20px;
+}
+body {
+
+}
