@@ -1,0 +1,25 @@
+{
+  "name": "ihavetogo",
+  "version": "1.0.0",
+  "description": "your family toilet finder",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ilterates/ihaveto.GO.git"
+  },
+  "author": "Ilter Ates",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ilterates/ihaveto.GO/issues"
+  },
+  "homepage": "https://github.com/ilterates/ihaveto.GO#readme",
+  "dependencies": {
+    "atom": "^1.0.0",
+    "body-parser": "^1.15.0",
+    "bower": "^1.7.9",
+    "express": "^4.13.4"
+  }
+}
