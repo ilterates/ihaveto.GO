@@ -38,7 +38,14 @@ function create(req, res) {
 }
 
 function show(req, res) {
-//findOne
+  db.Toilet.findById(req.params.toiletId, function(err, foundToilet) {
+      if (err)
+      {
+      console.log('Error:', err);
+    } else {
+      res.json(foundToilet);
+    }
+    });
 }
 
 function destroy(req, res) {

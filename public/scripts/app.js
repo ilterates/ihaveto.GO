@@ -1,17 +1,33 @@
 console.log("WE ARE ALIVE");
 
+   var source = $('#toilets-template').html();
+   var template = Handlebars.compile(source);
+
 $.ajax ({
   method: "GET",
   url: "/api/toilets",
   dataType: 'json',
+  success: renderToilets,
+  error: ajaxError
 });
 
-function toiletRender(data) {
-    var source = $('#toilets-template').html();
-    var template = Handlebars.compile(source);
-    var toiletHtml = template(toilet);
-    $("#toilets").append(toiletHtml);
+// function toiletRender(data) {
+
+//     var toiletHtml = template(toilet);
+//     $("#toilets").append(toiletHtml);
+// }
+function ajaxError(data){
+  console.log("ajax handling error" +  data);
 }
+
+function renderToilets(data) {
+
+    var toiletResults = data;
+    console.log(toiletResults);
+
+    var toiletHtml = template({ name: toiletResults });
+    $(".list-group-item").append(toiletHtml);
+  }
 
 
 

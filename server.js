@@ -28,6 +28,7 @@ app.use(express.static(__dirname + '/public'));
 
 app.get('/api', controllers.api.index);
 app.get('/api/toilets', controllers.toilets.index);
+app.get('/api/toilets/:toiletId',controllers.toilets.show);
 
 
 
