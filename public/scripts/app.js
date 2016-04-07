@@ -11,21 +11,15 @@ $.ajax ({
   error: ajaxError
 });
 
-// function toiletRender(data) {
-
-//     var toiletHtml = template(toilet);
-//     $("#toilets").append(toiletHtml);
-// }
 function ajaxError(data){
   console.log("ajax handling error" +  data);
 }
 
 function renderToilets(data) {
-
+    console.log(data);
     var toiletResults = data;
     console.log(toiletResults);
-
-    var toiletHtml = template({ name: toiletResults });
+    var toiletHtml = template({toilets:data});
     $(".list-group-item").append(toiletHtml);
   }
 

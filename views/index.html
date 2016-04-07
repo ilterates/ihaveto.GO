@@ -30,39 +30,39 @@
         </div>
         <div class="list">
           <li class="list-group-item">
-            <h4 class="inline-header">TEST:</h4>
-            <span>    – (1)n – (7) Tight Rope – </span>
+            <h4 class="inline-header"></h4>
+            <span></span>
           </li>
           <a class="pure-button" href="#">A Pure Button</a>
         </div>
         <!-- handlebars -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
-        <!-- javascript-->
-        <script src="scripts/app.js"></script>
 <!-- Handlebars -->
+<div class="row toilet" data-toilet-id="{{_id}}">
+  <div class="panel-body">
           <script id="toilets-template" type="text/x-handlebars-template">
-            <div class="row toilet" data-toilet-id="{{_id}}">
-              <div class="panel-body">
                 <!-- begin album internal row  -->
                 <div class='row' id="toilet-row">
-                  {{each toilet}}
+                  {{#each toilets}}
                   <ul class="list-group">
                     <li class="list-group-item">
                       <h4 class='inline-header'>Place:</h4>
-                      <span class='album-name'>{{name}}</span>
+                      <span class='name'>{{Name}}</span>
                     </li>
                     <li class="list-group-item">
                       <h4 class='inline-header'>Rating:</h4>
-                      <span class='artist-name'>{{rating}}</span>
+                      <span class='rating'>{{rating}}</span>
                     </li>
                   </ul>
                   {{/each}}
                 </div>
+              </script>
                 <!-- end of album internal row -->
               </div>
             </div>
 
             <!-- end one album -->
-          </script>
+            <!-- javascript-->
+        <script src="scripts/app.js"></script>
   </body>
 </html>
