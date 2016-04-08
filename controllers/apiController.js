@@ -6,6 +6,7 @@ function index(req, res) {
     endpoints: [
       {method: "GET", path: "/api", description: "Describes available endpoints"},
       {method: "GET", path: "/api/toilets", description: "Shows all available toilet db as json"},
+      {method: "GET", path: "/api/toilets/:id", description: "Shows specific toilet with id"},
       {method: "POST", path: "/api/toilets", description: "Allows posting new toilets"}
     ]
   });

@@ -2,6 +2,7 @@ var db = require("./models");
 
 
 var toiletList =[];
+var ratingList = [];
 toiletList.push({
               Name: "Starbucks",
               StreetNo: 122,
@@ -9,7 +10,6 @@ toiletList.push({
               City: "San Francisco",
               State: "California",
               Zip: 94107,
-              rating: "5"
             });
 toiletList.push({
               Name: "Target",
@@ -18,7 +18,6 @@ toiletList.push({
               City: "San Francisco",
               State: "California",
               Zip:94102,
-              rating: "4"
             });
 toiletList.push({
               Name: "General Assembly",
@@ -27,7 +26,6 @@ toiletList.push({
               City: "San Francisco",
               State: "California",
               Zip: 92107,
-              rating: "5"
             });
 toiletList.push({
               Name: "McDonalds",
@@ -36,8 +34,29 @@ toiletList.push({
               City: "San Francisco",
               State: "California",
               Zip: 94883,
-              rating: "1"
             });
+ratingList.push({
+      rating: 5,
+      comment: "greatest toilet"
+});
+ratingList.push({
+      rating: 3,
+      comment: "it smells"
+});
+ratingList.push({
+      rating: 1,
+      comment: "YAK"
+});
+ratingList.push({
+      rating: 4,
+      comment: "I feel good"
+});
+
+
+toiletList.forEach(function(toilet) {
+  toilet.rating = ratingList;
+  console.log(toiletList);
+});
 
 
 db.Toilet.remove({}, function(err, toilets){
