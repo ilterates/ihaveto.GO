@@ -28,7 +28,32 @@ function renderToilets(data) {
      $(".formField").css("display", "block");
   });
 
+$("#submitButton").click(function(e){
+  e.preventDefault();
+  // var $name = $("name").val(),
+  //     $streetName = $("StreetName").val(),
+  //     $streetNo = $("StreetNo").val(),
+  //     $Zip = $("Zip").val(),
+  //     $rating = $("rating").val(),
+  //     $City = $("City").val(),
+  //     $State = $("State").val();
+  $.ajax ({
+    method: "POST",
+    url: "/api/toilets",
+    data: $(".form").serialize(),
+    success: postSuccess,
+    error: postError
 
+  });
+
+});
+
+function postSuccess (data){
+  console.log(data + "Posted");
+}
+function postError (data){
+  console.log(data + "Error in ajax post");
+}
 
 
 

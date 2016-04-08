@@ -19,13 +19,15 @@ function index(req, res) {
 function create(req, res) {
   console.log(req.body);
  var newToilet = new db.Toilet ({
-   Name: String, //
-   StreetNo: Number, //
-   StreetName: String, //
-   City: String, //
-   State: String, //
-   Zip:Number, //
-   rating: String //
+   Name: req.body.name,
+   StreetNo: req.body.StreetNo,
+   StreetName: req.body.StreetName,
+   City: req.body.City,
+   State: req.body.State,
+   Zip: req.body.Zip,
+   rating:[{
+     rated: req.body.rating
+   }]
  });
  newToilet.save(function (err, toilet){
    if (err) {
