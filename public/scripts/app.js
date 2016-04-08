@@ -23,6 +23,10 @@ function renderToilets(data) {
     $(".list-group-item").append(toiletHtml);
   }
 
+  $(".pure-button").click(function(){
+     $(".map").toggle( "fade" );
+     $(".formField").css("display", "block");
+  });
 
 
 

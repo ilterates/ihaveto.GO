@@ -34,6 +34,9 @@ h1 {
   top: 80%;
   margin-right: 20px;
 }
-body {
-
+.button-success {
+  background: rgb(91, 90, 87)
+}
+.formField {
+  display: none;
 }
