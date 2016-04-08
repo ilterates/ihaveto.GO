@@ -3,8 +3,8 @@ var mongoose = require('mongoose'),
 
   var RatingSchema = new Schema ({
 
-     rating: Number,
-     comments: String
+     rated: Number,
+     comment: String
 
   });
 

@@ -2,7 +2,7 @@ var db = require("./models");
 
 
 var toiletList =[];
-var ratingList = [];
+
 toiletList.push({
               Name: "Starbucks",
               StreetNo: 122,
@@ -10,6 +10,10 @@ toiletList.push({
               City: "San Francisco",
               State: "California",
               Zip: 94107,
+              rating: [{
+                rated: 5,
+                comment: "greatest toilet"
+              }]
             });
 toiletList.push({
               Name: "Target",
@@ -18,6 +22,10 @@ toiletList.push({
               City: "San Francisco",
               State: "California",
               Zip:94102,
+              rating: [{
+                rated: 5,
+                comment: "greatest toilet"
+              }]
             });
 toiletList.push({
               Name: "General Assembly",
@@ -26,6 +34,10 @@ toiletList.push({
               City: "San Francisco",
               State: "California",
               Zip: 92107,
+              rating: [{
+                rated: 5,
+                comment: "greatest toilet"
+              }]
             });
 toiletList.push({
               Name: "McDonalds",
@@ -34,38 +46,20 @@ toiletList.push({
               City: "San Francisco",
               State: "California",
               Zip: 94883,
+              rating: [{
+                rated: 5,
+                comment: "greatest toilet"
+              }]
             });
-ratingList.push({
-      rating: 5,
-      comment: "greatest toilet"
-});
-ratingList.push({
-      rating: 3,
-      comment: "it smells"
-});
-ratingList.push({
-      rating: 1,
-      comment: "YAK"
-});
-ratingList.push({
-      rating: 4,
-      comment: "I feel good"
-});
 
+  db.Toilet.remove({}, function(err, toilets){
 
-toiletList.forEach(function(toilet) {
-  toilet.rating = ratingList;
-  console.log(toiletList);
-});
+    db.Toilet.create(toiletList, function(err, toilets){
+      if (err) { return console.log('ERROR', err); }
+      console.log("all toilets:", toilets);
+      console.log("created", toilets.length, "toilets");
 
+      process.exit();
 
-db.Toilet.remove({}, function(err, toilets){
-
-  db.Toilet.create(toiletList, function(err, toilets){
-    if (err) { return console.log('ERROR', err); }
-    console.log("all toilets:", toilets);
-    console.log("created", toilets.length, "toilets");
-    process.exit();
   });
-
 });

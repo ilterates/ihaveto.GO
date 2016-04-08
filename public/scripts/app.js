@@ -17,8 +17,8 @@ function ajaxError(data){
 
 function renderToilets(data) {
     console.log(data);
+    console.log(data[0].rating[0].rated);
     var toiletResults = data;
-    console.log(toiletResults);
     var toiletHtml = template({toilets:data});
     $(".list-group-item").append(toiletHtml);
   }

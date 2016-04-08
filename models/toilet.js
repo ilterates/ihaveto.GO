@@ -1,5 +1,6 @@
 var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
+  var Rating = require('./rating.js');
 
   var ToiletSchema = new Schema ({
 
@@ -9,7 +10,7 @@ var mongoose = require('mongoose'),
      City: String,
 	   State: String,
 	   Zip:Number,
-     rating: String
+     rating: [Rating.schema]
 
   });
 
