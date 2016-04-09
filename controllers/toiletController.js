@@ -1,11 +1,6 @@
 var db = require('../models');
 
-/************
- * DATABASE *
- ************/
 
-
-// GET /api/albums
 function index(req, res) {
   db.Toilet.find(function (err, album){
     if (!err) {

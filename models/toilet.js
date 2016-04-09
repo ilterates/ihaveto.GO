@@ -5,11 +5,11 @@ var mongoose = require('mongoose'),
   var ToiletSchema = new Schema ({
 
      Name: String,
-     StreetNo: Number,
+     StreetNo: String,
      StreetName: String,
      City: String,
 	   State: String,
-	   Zip:Number,
+	   Zip:String,
      rating: [Rating.schema]
 
   });
