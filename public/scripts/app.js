@@ -57,30 +57,32 @@ function postError (data){
 }
 
 // Google Maps
-var map;
-var geocoder;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('mapid'), {
-          center: {lat: 37.774, lng: -122.431},
-          zoom: 19
-        });
-      }
-      function codeAddress() {
+function initMap() {
+  var geocoder;
+  var map = new google.maps.Map(document.getElementById('mapid'), {
+    zoom: 12,
+    center: {lat: 37.774, lng: -122.431}
+  });
+  geocoder = new google.maps.Geocoder();
+  document.getElementById('testbutton').addEventListener('click', function() {
+    geocodeAddress(geocoder, map);
+  });
+}
 
-          var address = (returned[0].StreetName);
-          console.log(address);
-          geocoder.geocode( { 'address': address}, function(results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-              map.setCenter(results[0].geometry.location);
-              var marker = new google.maps.Marker({
-                  map: map,
-                  position: results[0].geometry.location
-              });
-            } else {
-              alert("Geocode was not successful for the following reason: " + status);
-            }
-          });
-        }
+function geocodeAddress(geocoder, resultsMap) {
+  var address = (returned[0].StreetNo + " " + returned[0].StreetName + " Street " + "San Francisco "+ returned[0].Zip);
+  geocoder.geocode({'address': address}, function(results, status) {
+    if (status === google.maps.GeocoderStatus.OK) {
+      resultsMap.setCenter(results[0].geometry.location);
+      var marker = new google.maps.Marker({
+        map: resultsMap,
+        position: results[0].geometry.location
+      });
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+    }
+  });
+}
 
 
 // Leaflet map
