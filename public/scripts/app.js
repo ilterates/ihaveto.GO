@@ -3,6 +3,7 @@ console.log("WE ARE ALIVE");
    var source = $('#toilets-template').html();
    var template = Handlebars.compile(source);
    var value;
+   var zoomVal =12;
 $.ajax ({
   method: "GET",
   url: "/api/toilets",
@@ -63,7 +64,7 @@ function postError (data){
 function initMap() {
   var geocoder;
   var map = new google.maps.Map(document.getElementById('mapid'), {
-    zoom: 12,
+    zoom: zoomVal,
     center: {lat: 37.774, lng: -122.431}
   });
   geocoder = new google.maps.Geocoder();
@@ -71,6 +72,8 @@ function initMap() {
     geocodeAddress(geocoder, map);
     value = e.target.value;
     console.log(value);
+  //  zoomVal = 15; I hoped to change zoom value on click.
+
   });
 }
 
