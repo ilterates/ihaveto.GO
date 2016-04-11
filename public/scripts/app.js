@@ -62,11 +62,11 @@ function postError (data){
 
 // Google Maps
 
-var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+
 var marker = new google.maps.Marker({
   position: myLatLng,
   map: map,
-  icon: iconBase + 'http://i.imgur.com/KYvAGUW.png'
+  icon: 'http://i.imgur.com/KYvAGUW.png'
 });
 
 function initMap() {
@@ -80,13 +80,14 @@ function initMap() {
     geocodeAddress(geocoder, map);
     value = e.target.value;
     console.log(value);
-  //  zoomVal = 15; I hoped to change zoom value on click
 
+  //  zoomVal = 15; I hoped to change zoom value on click
   });
+
 }
 
 function geocodeAddress(geocoder, resultsMap) {
-console.log(value);
+console.log(value); // strangely code wasn't working until I console logged value here. Before this, address was undefined.. ??
   var address = value;
   // console.log($("#buttonGO").val());
   console.log(address, "is the address");
@@ -96,10 +97,12 @@ console.log(value);
       resultsMap.setCenter(results[0].geometry.location);
       var marker = new google.maps.Marker({
         map: resultsMap,
+        icon: 'http://i.imgur.com/RLwGOHB.png',
         position: results[0].geometry.location
       });
     } else {
       alert('Geocode was not successful for the following reason: ' + status);
     }
   });
+
 }
