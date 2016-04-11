@@ -25,8 +25,8 @@ function renderToilets(data) {
 
     toiletResults.forEach(function(z){
       var val = z.StreetNo + " " + z.StreetName + " street " + z.City + " " + z.Zip;
-      var $button = $("<button>", {value: val, class: 'goButton', text: z.Name, id: 'buttonGO'});
-      $(".holySpan").append($button);
+      //var $button = $("<button>", {value: val, class: 'goButton', text: z.Name, id: 'buttonGO'});
+    //  $(".holySpan").append($button);
       console.log(z.StreetNo + " " + z.StreetName + " street" + z.City + " " + z.Zip);
     });
 }
@@ -61,6 +61,14 @@ function postError (data){
 }
 
 // Google Maps
+
+var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+var marker = new google.maps.Marker({
+  position: myLatLng,
+  map: map,
+  icon: iconBase + 'http://i.imgur.com/KYvAGUW.png'
+});
+
 function initMap() {
   var geocoder;
   var map = new google.maps.Map(document.getElementById('mapid'), {
@@ -68,11 +76,11 @@ function initMap() {
     center: {lat: 37.774, lng: -122.431}
   });
   geocoder = new google.maps.Geocoder();
-  $('.goButton').click(function(e) {
+  $('.pure-button').click(function(e) {
     geocodeAddress(geocoder, map);
     value = e.target.value;
     console.log(value);
-  //  zoomVal = 15; I hoped to change zoom value on click.
+  //  zoomVal = 15; I hoped to change zoom value on click
 
   });
 }
