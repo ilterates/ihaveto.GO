@@ -19,7 +19,7 @@ function ajaxError(data){
 function renderToilets(data) {
     console.log(data, "this is data");
     var toiletResults = data;
-    var toiletHtml = template({toilets:data});
+    toiletHtml = template({toilets:toiletResults});
     $(".list-group-item").append(toiletHtml);
 
 
@@ -34,40 +34,35 @@ function renderToilets(data) {
 
   $(".pure-button").click(function(){
      $(".map").toggle( "fade" );
+     $(".fixedMap").toggle( "fade" );
      $(".formField").css("display", "block");
   });
 
 
 
-$("#submitButton").click(function(e){
-  e.preventDefault();
+$("#submitButton").click(function(data){
+  data.preventDefault();
 
   $.ajax ({
     method: "POST",
     url: "/api/toilets",
-    data: $(".form").serialize(),
-    success: postSuccess,
+    data: $("#form").serialize(),
+    success: addToilet,
     error: postError
 
   });
 
 });
 
-function postSuccess (data){
-  console.log(data + "Posted");
+function addToilet (newToilet){
+  $(".list-group-item").append(toiletHtml);
 }
+
 function postError (data){
   console.log(data + "Error in ajax post");
 }
 
 // Google Maps
-
-
-var marker = new google.maps.Marker({
-  position: myLatLng,
-  map: map,
-  icon: 'http://i.imgur.com/KYvAGUW.png'
-});
 
 function initMap() {
   var geocoder;

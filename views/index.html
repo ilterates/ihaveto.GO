@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>i have to .GO</title>
@@ -31,34 +31,34 @@
   <body>
 
     <div class="top">
-      <h1>I have to <img src="http://i.imgur.com/KYvAGUW.png" </h1>
+      <p>I have to <img src="http://i.imgur.com/KYvAGUW.png" </p>
     </div>
     <table class="formTable">
-      <form class="form" method="post" >
+      <form class="pure-form pure-form-stacked" id="form" method="post" >
         <fieldset class="formField">
-          <div class="pure-control-group">
+          <div class="pure-form">
             <label for="name">Location Name:</label><br>
-            <input type="input" name="name" value="omagad?" placeholder="Name"><br><br>
+            <input id="text" name="name" value="" placeholder="Name" required><br><br>
           </div>
-            <div class="pure-control-group">
+            <div class="pure-form">
             <label for="StreetNo">Street Number:</label><br>
-            <input type="input" name="StreetNo" value="225" placeholder="Number"><br><br>
+            <input id="number" type="number" name="StreetNo" value="" placeholder="Street Number" required><br><br>
           </div>
-            <div class="pure-control-group">
+            <div class="pure-form">
             <label for="StreetName">Street Name:</label><br>
-            <input type="input" name="StreetName" value="bush" placeholder="Street Name"><br><br>
+            <input id="text" name="StreetName" value="" placeholder="Street Name" required><br><br>
           </div>
-            <div class="pure-control-group">
+            <div class="pure-form">
             <label for="Zip">Area Code:</label><br>
-            <input type="input" name="Zip" value="94222" placeholder="Zip"><br><br>
+            <input id="number"type="number" name="Zip" value="" placeholder="Zip" required><br><br>
           </div>
-            <div class="pure-control-group">
+            <div class="pure-form">
             <label for="rating">Your rating</label><br>
-            <input type="input" name="rating" value="" placeholder="Rating">
+            <input id="number" type="number" name="rating" pattern="[1-5]" value="" placeholder="Rating 1 to 5">
             <input type="hidden" name="City" value="San Francisco">
             <input type="hidden" name="State" value="California">
           </div>
-            <button class="button-success" id="submitButton">Submit</button>
+            <button class="pure-button" id="submitButton">Submit</button>
           </div>
         </fieldset>
       </form>
