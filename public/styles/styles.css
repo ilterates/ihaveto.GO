@@ -3,12 +3,12 @@ body {
   font-weight: bold;
 }
 img {
-  width: 34px;
-  height: 34px;
+  width: 44px;
+  height: 44px;
 }
 p {
   text-align: center;
-  font-size: 50px;
+  font-size: 70px;
   font-family: Peddana;
   font-weight: lighter;
 }
@@ -55,22 +55,25 @@ p {
 }
 #add {
   top: 20%;
-  left: 80%;
+  left: 77%;
   position: relative;
   background: rgb(140, 114, 114);
   color: white;
+  font-size: 20px;
 }
 #go {
 background: rgb(140, 114, 114);
 position: relative;
 color: white;
 float: right;
-top: -40px;
+top: -60px;
+font-size: 20px;
 }
 #submitButton {
   background: rgb(140, 114, 114);
   color: white;
   top: 20%;
+  font-size: 20px;
 }
 .list-group-item {
   border-style: none;
