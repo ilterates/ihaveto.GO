@@ -54,7 +54,7 @@ p {
   height: 100%;
 }
 #add {
-  top:20%;
+  top: 20%;
   left: 80%;
   position: relative;
   background: rgb(140, 114, 114);
@@ -70,7 +70,7 @@ top: -40px;
 #submitButton {
   background: rgb(140, 114, 114);
   color: white;
-  top: 20px;
+  top: 20%;
 }
 .list-group-item {
   border-style: none;

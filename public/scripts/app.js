@@ -55,7 +55,9 @@ $("#submitButton").click(function(data){
 });
 
 function addToilet (newToilet){
+  console.log(toiletHtml);
   $(".list-group-item").append(toiletHtml);
+  $(".formField").css("display", "none");
 }
 
 function postError (data){
@@ -68,7 +70,15 @@ function initMap() {
   var geocoder;
   var map = new google.maps.Map(document.getElementById('mapid'), {
     zoom: zoomVal,
-    center: {lat: 37.774, lng: -122.431}
+    center: {lat: 37.774, lng: -122.431},
+    styles: [{"featureType":"landscape","elementType":"labels","stylers":[{"visibility":"off"}]},
+    {"featureType":"transit","elementType":"labels","stylers":[{"visibility":"off"}]},
+    {"featureType":"poi","elementType":"labels","stylers":[{"visibility":"off"}]},
+    {"featureType":"water","elementType":"labels","stylers":[{"visibility":"off"}]},
+    {"featureType":"road","elementType":"labels.icon","stylers":[{"visibility":"off"}]},
+    {"stylers":[{"hue":"#00aaff"},{"saturation":-100},{"gamma":2.15},{"lightness":12}]},
+    {"featureType":"road","elementType":"labels.text.fill","stylers":[{"visibility":"on"},
+    {"lightness":24}]},{"featureType":"road","elementType":"geometry","stylers":[{"lightness":57}]}]
   });
   geocoder = new google.maps.Geocoder();
   $('.pure-button').click(function(e) {
