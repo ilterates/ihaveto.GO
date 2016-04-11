@@ -36,9 +36,8 @@ function create(req, res) {
 
 function show(req, res) {
   db.Toilet.findById(req.params.toiletId, function(err, foundToilet) {
-      if (err)
-      {
-      console.log('Error:', err);
+      if (err) {
+      console.log('Show Error:', err);
     } else {
       res.json(foundToilet);
     }
@@ -46,7 +45,11 @@ function show(req, res) {
 }
 
 function destroy(req, res) {
-  // delete
+  db.Toilet.findOneAndRemove({ _id: req.params.toiletId }, function(err, found){
+    // note you could send just send 204, but we're sending 200 and the deleted entity
+    res.json(found);
+    console.log(found);
+  });
 }
 
 function update(req, res) {
