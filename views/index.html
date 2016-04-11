@@ -80,7 +80,7 @@
           <script id="toilets-template" type="text/x-handlebars-template">
                 <!-- begin album internal row  -->
                 <div class='row' id="toilet-row">
-                  {{#each toilets}}
+                    {{#each toilets}}
                   <ul class="list-group">
                     <li class="list-group-item">
                       <h4 class='inline-header'>Place:</h4>
@@ -89,10 +89,11 @@
                     <li class="list-group-item">
                       <h4 class='inline-header'>Rating:</h4>
                       <span class='rating'>{{rating.0.rated}}</span>
-                      <button type="button" id="testbutton" name="button"></button>
+                      <button class='goButton' id="buttonGO" value="{{StreetNo}} {{StreetName}} Street {{City}} {{Zip}}">GO!</button>
                     </li>
                   </ul>
-                  {{/each}}
+                    {{/each}}
+
                 </div>
               </script>
                 <!-- end of album internal row -->

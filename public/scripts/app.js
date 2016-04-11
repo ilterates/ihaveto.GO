@@ -2,7 +2,7 @@ console.log("WE ARE ALIVE");
 
    var source = $('#toilets-template').html();
    var template = Handlebars.compile(source);
-   var returned;
+   var value;
 $.ajax ({
   method: "GET",
   url: "/api/toilets",
@@ -16,28 +16,31 @@ function ajaxError(data){
 }
 
 function renderToilets(data) {
-    returned = data;
-    console.log(returned);
-    console.log(data[0].rating[0].rated);
+    console.log(data, "this is data");
     var toiletResults = data;
     var toiletHtml = template({toilets:data});
     $(".list-group-item").append(toiletHtml);
-  }
+
+
+    toiletResults.forEach(function(z){
+      var val = z.StreetNo + " " + z.StreetName + " street " + z.City + " " + z.Zip;
+      var $button = $("<button>", {value: val, class: 'goButton', text: z.Name, id: 'buttonGO'});
+      $(".holySpan").append($button);
+      console.log(z.StreetNo + " " + z.StreetName + " street" + z.City + " " + z.Zip);
+    });
+}
+
 
   $(".pure-button").click(function(){
      $(".map").toggle( "fade" );
      $(".formField").css("display", "block");
   });
 
+
+
 $("#submitButton").click(function(e){
   e.preventDefault();
-  // var $name = $("name").val(),
-  //     $streetName = $("StreetName").val(),
-  //     $streetNo = $("StreetNo").val(),
-  //     $Zip = $("Zip").val(),
-  //     $rating = $("rating").val(),
-  //     $City = $("City").val(),
-  //     $State = $("State").val();
+
   $.ajax ({
     method: "POST",
     url: "/api/toilets",
@@ -64,14 +67,20 @@ function initMap() {
     center: {lat: 37.774, lng: -122.431}
   });
   geocoder = new google.maps.Geocoder();
-  document.getElementById('testbutton').addEventListener('click', function() {
+  $('.goButton').click(function(e) {
     geocodeAddress(geocoder, map);
+    value = e.target.value;
+    console.log(value);
   });
 }
 
 function geocodeAddress(geocoder, resultsMap) {
-  var address = (returned[0].StreetNo + " " + returned[0].StreetName + " Street " + "San Francisco "+ returned[0].Zip);
+console.log(value);
+  var address = value;
+  // console.log($("#buttonGO").val());
+  console.log(address, "is the address");
   geocoder.geocode({'address': address}, function(results, status) {
+    console.log(results[0].geometry.location);
     if (status === google.maps.GeocoderStatus.OK) {
       resultsMap.setCenter(results[0].geometry.location);
       var marker = new google.maps.Marker({
@@ -83,14 +92,3 @@ function geocodeAddress(geocoder, resultsMap) {
     }
   });
 }
-
-
-// Leaflet map
-// var mymap = L.map('mapid').setView([37.774, -122.431], 13);
-//
-// L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-//     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-//     maxZoom: 18,
-//     id: 'ilterates.pk6md0o7',
-//     accessToken: 'pk.eyJ1IjoiaWx0ZXJhdGVzIiwiYSI6ImNpbXFsYmE1bTAwbDd3a2x1OTNidmtuMDUifQ.p0ZHX4q7HRq_ze-NHyrT4Q'
-// }).addTo(mymap);

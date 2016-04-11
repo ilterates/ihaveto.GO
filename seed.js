@@ -5,23 +5,23 @@ var toiletList =[];
 
 toiletList.push({
               Name: "Starbucks",
-              StreetNo: 122,
+              StreetNo: "11",
               StreetName: "3rd",
               City: "San Francisco",
               State: "California",
-              Zip: 94107,
+              Zip: "94107",
               rating: [{
                 rated: 5,
                 comment: "greatest toilet"
               }]
             });
 toiletList.push({
-              Name: "Target",
-              StreetNo: 44,
-              StreetName: "Jameson",
+              Name: "Home",
+              StreetNo: "900",
+              StreetName: "Folsom",
               City: "San Francisco",
               State: "California",
-              Zip:94102,
+              Zip:"94107",
               rating: [{
                 rated: 5,
                 comment: "greatest toilet"
@@ -29,11 +29,11 @@ toiletList.push({
             });
 toiletList.push({
               Name: "General Assembly",
-              StreetNo: 225,
+              StreetNo: "225",
               StreetName: "Bush",
               City: "San Francisco",
               State: "California",
-              Zip: 92107,
+              Zip: "94104",
               rating: [{
                 rated: 5,
                 comment: "greatest toilet"
@@ -41,11 +41,11 @@ toiletList.push({
             });
 toiletList.push({
               Name: "McDonalds",
-              StreetNo: 2332,
+              StreetNo: "575",
               StreetName: "Market",
               City: "San Francisco",
               State: "California",
-              Zip: 94883,
+              Zip: "94105",
               rating: [{
                 rated: 5,
                 comment: "greatest toilet"
