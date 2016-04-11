@@ -16,10 +16,10 @@
     <!-- leaflet map
     <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />-->
-
     <!-- Google maps API -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCY25kFpB9MKtDTXzKV3VlSYnlcyc8ML10&callback=initMap"
-    async defer></script>
+
+
+
     <!-- STYLESHEETS -->
 
     <link rel="stylesheet" type="text/css" href="styles/styles.css">
@@ -74,6 +74,7 @@
             <span></span>
           </li>
         </div>
+
         <!-- handlebars -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
 <!-- Handlebars -->
@@ -88,7 +89,8 @@
                       <h2 class='inline-header'>Place: {{Name}}</h4>
                     </div>
                     <div class="list-group-item">
-                      <h2 class='inline-header'>Rating: {{rating.0.rated}}</h4><button class="pure" id="delButton">Del</button>
+                      <h2 class='inline-header'>Rating: {{rating.0.rated}}</h4>
+                      <button class="pure" id="delButton">Del</button>
                       <button class='pure-button' id="go" value="{{StreetNo}} {{StreetName}} Street {{City}} {{Zip}}">GO!</button>
                     </div>
                     <div class="lineCheat">
@@ -105,5 +107,7 @@
             <!-- end one album -->
             <!-- javascript-->
         <script src="scripts/app.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCY25kFpB9MKtDTXzKV3VlSYnlcyc8ML10&callback=initMap"
+        async defer></script>
   </body>
 </html>

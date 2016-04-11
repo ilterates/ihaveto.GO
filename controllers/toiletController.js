@@ -46,7 +46,6 @@ function show(req, res) {
 
 function destroy(req, res) {
   db.Toilet.findOneAndRemove({ _id: req.params.toiletId }, function(err, found){
-    // note you could send just send 204, but we're sending 200 and the deleted entity
     res.json(found);
     console.log(found);
   });
