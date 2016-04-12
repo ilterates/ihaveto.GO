@@ -97,7 +97,7 @@
         <div class="map" id="mapid">
         </div>
       </div>
-      <button class="button-c pure-button" id="add">Add a bathroom</button>
+      <button class="button-c pure-button" name="new" id="add">Add a bathroom</button>
         <div class="list">
           <li class="list-group-item">
             <h4 class="inline-header"></h4>
@@ -122,7 +122,7 @@
                       <h2 class='inline-header'>Rating: {{rating.0.rated}}</h4>
                       <button class="pure" id="delButton" name="delete" data-toilet-id="{{_id}}">Delete</button>
                       <button class="pure-button" id="updateSubmit" name="update" data-toilet-id="{{_id}}">update</button>
-                      <button class='pure-button' id="go" value="{{StreetNo}} {{StreetName}} Street {{City}} {{Zip}}">GO!</button>
+                      <button class='pure-button' id="go" name="go" value="{{StreetNo}} {{StreetName}} Street {{City}} {{Zip}}">GO!</button>
                     </div>
                     <div class="lineCheat">
                     </div>

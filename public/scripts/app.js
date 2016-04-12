@@ -52,9 +52,9 @@ function renderNew(data) {
     method: "GET",
     url: "/api/toilets",
     dataType: 'json',
-    success: why
+    success: reRender
   });
-  function why(data){
+  function reRender(data){
     console.log(data);
     toiletHtml = template({toilets:data});
     console.log(toiletHtml);
@@ -82,13 +82,25 @@ function handleDelete(context) {
   console.log('removing the following toilet from the page:', toiletId);
 }
 
-  // $(this).click(function(e){
-  //   if (e.target.name ===  "update")
-  //    $(".fixedMap").toggle( "fade" );
-  //    $(".formFieldUpdate").css("display", "block");
-  //    tempId = ('#updateSubmit').data('toilet-id');
-  //    console.log(tempId, "recorded ID");
-  // });
+  $(this).click(function(e){
+    if (e.target.name ===  "new") {
+      $(".fixedMap").toggle( "fade" );
+      $(".formField").css("display", "block");
+      $(".formFieldUpdate").css("display", "none");
+    }
+  });
+
+  $(this).click(function(event){
+    if (event.target.name ===  "update") {
+      $(".fixedMap").toggle( "fade" );
+      $("#formField").css("display", "none");
+      $(".formFieldUpdate").css("display", "block");
+      tempId = this;
+      console.log(tempId);
+    }
+  });
+
+
 
   $(this).click(function(e){
     if (e.target.name == "delete")
@@ -108,11 +120,12 @@ $("#submitButton").click(function(data){
     error: postError
 
   });
+  $(".fixedMap").toggle( "fade" );
 });
 
 $("#updateButton").click(function(e){
-  e.preventDefault();
-  console.log(tempId, " toilet id is on left");
+  var toiletId = tempId.data('toilet-id');
+  console.log(toiletId);
 
   $.ajax({
     method: 'PUT',
@@ -153,12 +166,10 @@ function postError (data){
 
   }
   $(this).click(function(e) {
-    if (e.target.value) {
+    if (e.target.name === "go") {
       value = e.target.value;
       geocodeAddress(geocoder, map);
       console.log(value);
-    } else {
-      console.log("No address on this button");
     }
   });
 
