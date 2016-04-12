@@ -59,6 +59,10 @@ function update(req, res) {
       foundToilet.name = req.body.name;
       foundToilet.StreetNo = req.body.StreetNo;
       foundToilet.StreetName = req.body.StreetName;
+      foundToilet.City = req.body.City;
+      foundToilet.State = req.body.State;
+      foundToilet.Zip = req.body.Zip;
+      foundToilet.rating.rated = req.body.rated;
       foundToilet.save(function(err, savedToilet) {
         if(err) { console.log('saving altered toilet failed'); }
         res.json(savedToilet);

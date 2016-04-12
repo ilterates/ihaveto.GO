@@ -5,7 +5,7 @@ console.log("WE ARE ALIVE");
    var value;
    var zoomVal = 12;
    var toiletArray = [];
-   var geocoder, map;
+   var geocoder, map,tempId;
 
 
 
@@ -65,17 +65,30 @@ function renderNew(data) {
 
   }
 }
-
+    $("#delButton").click(function (){
+       console.log("clicked del button");
+       handleDelete(this);
+    });
 function handleDelete(context) {
+    var toiletId = $('#delButton').data('toilet-id');
+    console.log(toiletId, " toilet id is on left");
 
+      $.ajax({
+      method: 'DELETE',
+        url: '/api/toilets/' + toiletId,
+        success: renderNew,
+        error: deleteError
+      });
   console.log('removing the following toilet from the page:', toiletId);
 }
 
-  $(this).click(function(e){
-    if (e.target.name == "update")
-     $(".fixedMap").toggle( "fade" );
-     $(".formFieldUpdate").css("display", "block");
-  });
+  // $(this).click(function(e){
+  //   if (e.target.name ===  "update")
+  //    $(".fixedMap").toggle( "fade" );
+  //    $(".formFieldUpdate").css("display", "block");
+  //    tempId = ('#updateSubmit').data('toilet-id');
+  //    console.log(tempId, "recorded ID");
+  // });
 
   $(this).click(function(e){
     if (e.target.name == "delete")
@@ -97,23 +110,25 @@ $("#submitButton").click(function(data){
   });
 });
 
-$("#updateSubmit").click(function(data){
-  var toiletId = $('#updateButton').data('toilet-id');
-  console.log(toiletId, " toilet id is on left");
+$("#updateButton").click(function(e){
+  e.preventDefault();
+  console.log(tempId, " toilet id is on left");
 
   $.ajax({
     method: 'PUT',
-    url: '/api/toilets/' + toiletId,
+    url: '/api/toilets/' + tempId,
+    data:$("#updateForm").serialize(),
     success: renderNew,
-    error: deleteError
+    error: updateError
   });
 
 });
-
+function updateError(data) {
+  console.log(data + "error in ajax update");
+}
 function deleteError(data) {
   console.log(data + "error in ajax delete");
 }
-
 function postError (data){
   console.log(data + "Error in ajax post");
 }
@@ -138,8 +153,6 @@ function postError (data){
 
   }
   $(this).click(function(e) {
-    // console.log("go was clicked");
-    // console.log(e);
     if (e.target.value) {
       value = e.target.value;
       geocodeAddress(geocoder, map);
