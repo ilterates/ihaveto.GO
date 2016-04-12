@@ -5,7 +5,7 @@
                        “ (________) ”~
                        (____________) ”
 
-I have to poo helps you avoid stinky bathrooms or help bathrooms when you need one.
+I have to poo helps you avoid stinky bathrooms or help you find bathrooms when you need one.
 
 TO BE POSTED --
 

@@ -4,7 +4,7 @@ var db = require("./models");
 var toiletList =[];
 
 toiletList.push({
-              Name: "Starbucks",
+              Name: "Phill's Turkish Bath",
               StreetNo: "11",
               StreetName: "3rd",
               City: "San Francisco",
@@ -16,14 +16,14 @@ toiletList.push({
               }]
             });
 toiletList.push({
-              Name: "Home",
+              Name: "Adam's dungeon",
               StreetNo: "900",
               StreetName: "Folsom",
               City: "San Francisco",
               State: "California",
               Zip:"94107",
               rating: [{
-                rated: 5,
+                rated: 1,
                 comment: "greatest toilet"
               }]
             });
