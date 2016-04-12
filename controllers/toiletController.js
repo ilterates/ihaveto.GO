@@ -2,7 +2,7 @@ var db = require('../models');
 
 
 function index(req, res) {
-  db.Toilet.find(function (err, album){
+  db.Toilet.find({},function (err, album){
     if (!err) {
         res.json(album);
       } else {
@@ -46,13 +46,24 @@ function show(req, res) {
 
 function destroy(req, res) {
   db.Toilet.findOneAndRemove({ _id: req.params.toiletId }, function(err, found){
+    console.log('hihihihi', found);
     res.json(found);
-    console.log(found);
+    console.log('successfully removed id:', req.params.toiletId);
   });
 }
 
 function update(req, res) {
-  // put
+  console.log('updating with data', req.body);
+    db.Toilet.findById(req.params.toiletId, function(err, foundToilet) {
+      if(err) { console.log('toiletController.update error', err); }
+      foundToilet.name = req.body.name;
+      foundToilet.StreetNo = req.body.StreetNo;
+      foundToilet.StreetName = req.body.StreetName;
+      foundToilet.save(function(err, savedToilet) {
+        if(err) { console.log('saving altered toilet failed'); }
+        res.json(savedToilet);
+      });
+    });
 }
 
 

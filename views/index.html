@@ -63,6 +63,36 @@
         </fieldset>
       </form>
     </table>
+    <table class="formTableUpdate">
+      <form class="pure-form pure-form-stacked" id="form" method="post" >
+        <fieldset class="formField">
+          <div class="pure-form">
+            <label for="name">Location Name:</label><br>
+            <input id="text" name="name" value="" placeholder="Name" required><br><br>
+          </div>
+            <div class="pure-form">
+            <label for="StreetNo">Street Number:</label><br>
+            <input id="number" type="number" name="StreetNo" value="" placeholder="Street Number" required><br><br>
+          </div>
+            <div class="pure-form">
+            <label for="StreetName">Street Name:</label><br>
+            <input id="text" name="StreetName" value="" placeholder="Street Name" required><br><br>
+          </div>
+            <div class="pure-form">
+            <label for="Zip">Area Code:</label><br>
+            <input id="number"type="number" name="Zip" value="" placeholder="Zip" required><br><br>
+          </div>
+            <div class="pure-form">
+            <label for="rating">Your rating</label><br>
+            <input id="number" type="number" name="rating" pattern="[1-5]" value="" placeholder="Rating 1 to 5">
+            <input type="hidden" name="City" value="San Francisco">
+            <input type="hidden" name="State" value="California">
+          </div><br>
+            <button class="pure-button" id="submitButton">Submit</button>
+          </div>
+        </fieldset>
+      </form>
+    </table>
       <div class="fixedMap">
         <div class="map" id="mapid">
         </div>
@@ -78,19 +108,19 @@
         <!-- handlebars -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
 <!-- Handlebars -->
-<div class="row toilet" data-toilet-id="{{_id}}">
   <div class="panel-body">
           <script id="toilets-template" type="text/x-handlebars-template">
+            <div class="row toilet" data-toilet-id="{{_id}}">
                 <!-- begin album internal row  -->
                 <div class='row' id="toilet-row">
                     {{#each toilets}}
                   <div class="list-group">
                     <div class="list-group-item">
-                      <h2 class='inline-header'>Place: {{Name}}</h4>
+                      <h2 class='inline-header' name="{{_id}}" >Place: {{Name}}</h4>
                     </div>
                     <div class="list-group-item">
                       <h2 class='inline-header'>Rating: {{rating.0.rated}}</h4>
-                      <button class="pure" id="delButton">Del</button>
+                      <button class="pure" id="delButton" data-toilet-id="{{_id}}">Del</button>
                       <button class='pure-button' id="go" value="{{StreetNo}} {{StreetName}} Street {{City}} {{Zip}}">GO!</button>
                     </div>
                     <div class="lineCheat">
@@ -99,10 +129,10 @@
                     {{/each}}
 
                 </div>
+              </div>
               </script>
                 <!-- end of album internal row -->
               </div>
-            </div>
 
             <!-- end one album -->
             <!-- javascript-->

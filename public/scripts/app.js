@@ -8,16 +8,17 @@ console.log("WE ARE ALIVE");
    var geocoder, map;
 
 
-// GET POST DEL PUT
 
 
+   // GET
 $.ajax ({
   method: "GET",
-  url: "/api/toilets",
+  url: "/api/toilets/",
   dataType: 'json',
   success: renderToilets,
   error: ajaxError
 });
+
 
 function ajaxError(data){
   console.log("ajax handling error" +  data);
@@ -45,33 +46,60 @@ function renderToilets(data) {
     //   $(".holySpan").append($button);
     //   console.log(z.StreetNo + " " + z.StreetName + " street" + z.City + " " + z.Zip);
     // });
+    $(".pure").click(function (){
+      console.log("clicked del button");
+      handleDelete(this);
+    });
 }
 function renderNew(data) {
-  var toiletResults;
-  toiletArray.push(data);
-  toiletHtml = template({toilets:toiletResults});
-  $(".list-group-item").append(toiletHtml);
-  $(".formField").css("display", "none");
-}
-
-$(".pure").click(function (){
-console.log("clicked del button");
-});
-function deleteToilet(data) {
-  var toiletId = $(this).parents('.toilet').data('toilet-id');
-  console.log('someone wants to delete toilet id=' + ToiletId );
-  $.ajax({
-    url: '/api/toilets/' + toiletId,
-    method: 'DELETE',
-    success: delToilet
+  $.ajax ({
+    method: "GET",
+    url: "/api/toilets",
+    dataType: 'json',
+    success: why
   });
+  function why(data){
+    console.log(data);
+    toiletHtml = template({toilets:data});
+    console.log(toiletHtml);
+    $(".list-group-item").empty();
+    $(".list-group-item").append(toiletHtml);
+    $(".formField").css("display", "none");
+  }
 }
 
 
-function delToilet(data) {
-  var deletedToiletId = data._id;
-  console.log('removing the following toilet from the page:', deletedToiletId);
-  $('div[data-toilet-id=' + deletedToiletId + ']').remove(); // what
+// function deleteToilet(data) {
+//   var toiletId = $(this).parents('.toilet').data('toilet-id');
+//   console.log('someone wants to delete toilet id=' + ToiletId );
+//
+// }
+function handleUpdate(context) {
+   var toiletId = $('.pure').data('toilet-id');
+   console.log(toiletId, " toilet id is on left");
+
+  $.ajax({
+    method: 'PUT',
+    url: '/api/toilets/' + toiletId,
+    success: renderNew,
+    error: deleteError
+  });
+
+  console.log('removing the following toilet from the page:', toiletId);
+}
+
+function handleDelete(context) {
+   var toiletId = $('.pure').data('toilet-id');
+   console.log(toiletId, " toilet id is on left");
+
+  $.ajax({
+    method: 'DELETE',
+    url: '/api/toilets/' + toiletId,
+    success: renderNew,
+    error: deleteError
+  });
+
+  console.log('removing the following toilet from the page:', toiletId);
 }
 
   $(".pure-button").click(function(){
@@ -95,7 +123,9 @@ $("#submitButton").click(function(data){
   });
 
 });
-
+function deleteError(data) {
+  console.log(data + "error in ajax delete");
+}
 
 function postError (data){
   console.log(data + "Error in ajax post");
@@ -121,14 +151,14 @@ function postError (data){
 
   }
   $(this).click(function(e) {
-    console.log("go was clicked");
-    console.log(e);
+    // console.log("go was clicked");
+    // console.log(e);
     if (e.target.value) {
       value = e.target.value;
       geocodeAddress(geocoder, map);
       console.log(value);
     } else {
-      console.log("No button on this address");
+      console.log("No address on this button");
     }
 
 

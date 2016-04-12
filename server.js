@@ -30,6 +30,8 @@ app.get('/api', controllers.api.index);
 app.get('/api/toilets', controllers.toilets.index);
 app.get('/api/toilets/:toiletId',controllers.toilets.show);
 app.post('/api/toilets', controllers.toilets.create);
+app.delete('/api/toilets/:toiletId', controllers.toilets.destroy);
+app.put('/api/toilets/:toiletId', controllers.toilets.update);
 
 
 
