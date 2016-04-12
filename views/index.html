@@ -65,7 +65,7 @@
     </table>
     <table class="formTableUpdate">
       <form class="pure-form pure-form-stacked" id="form" method="post" >
-        <fieldset class="formField">
+        <fieldset class="formFieldUpdate">
           <div class="pure-form">
             <label for="name">Location Name:</label><br>
             <input id="text" name="name" value="" placeholder="Name" required><br><br>
@@ -88,7 +88,7 @@
             <input type="hidden" name="City" value="San Francisco">
             <input type="hidden" name="State" value="California">
           </div><br>
-            <button class="pure-button" id="submitButton">Submit</button>
+            <button class="pure-button" id="updateButton">Submit</button>
           </div>
         </fieldset>
       </form>
@@ -120,7 +120,8 @@
                     </div>
                     <div class="list-group-item">
                       <h2 class='inline-header'>Rating: {{rating.0.rated}}</h4>
-                      <button class="pure" id="delButton" data-toilet-id="{{_id}}">Del</button>
+                      <button class="pure" id="delButton" name="delete" data-toilet-id="{{_id}}">Delete</button>
+                      <button class="pure-button" id="updateSubmit" name="update" data-toilet-id="{{_id}}">update</button>
                       <button class='pure-button' id="go" value="{{StreetNo}} {{StreetName}} Street {{City}} {{Zip}}">GO!</button>
                     </div>
                     <div class="lineCheat">

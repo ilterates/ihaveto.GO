@@ -49,6 +49,17 @@ p {
   border-style: none;
   font-size: 16px;
 }
+.formFieldUpdate {
+  display: none;
+  position: fixed;
+  text-align: center;
+  margin-left: 300px;
+  margin-top: 50px;
+  width: 400px;
+  border-style: none;
+  font-size: 16px;
+
+}
 .pure-control-group {
   width: 100%;
   height: 100%;

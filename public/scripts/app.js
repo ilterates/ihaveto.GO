@@ -46,10 +46,6 @@ function renderToilets(data) {
     //   $(".holySpan").append($button);
     //   console.log(z.StreetNo + " " + z.StreetName + " street" + z.City + " " + z.Zip);
     // });
-    $(".pure").click(function (){
-      console.log("clicked del button");
-      handleDelete(this);
-    });
 }
 function renderNew(data) {
   $.ajax ({
@@ -65,48 +61,26 @@ function renderNew(data) {
     $(".list-group-item").empty();
     $(".list-group-item").append(toiletHtml);
     $(".formField").css("display", "none");
+    $(".formFieldUpdate").css("display", "none");
+
   }
 }
 
-
-// function deleteToilet(data) {
-//   var toiletId = $(this).parents('.toilet').data('toilet-id');
-//   console.log('someone wants to delete toilet id=' + ToiletId );
-//
-// }
-function handleUpdate(context) {
-   var toiletId = $('.pure').data('toilet-id');
-   console.log(toiletId, " toilet id is on left");
-
-  $.ajax({
-    method: 'PUT',
-    url: '/api/toilets/' + toiletId,
-    success: renderNew,
-    error: deleteError
-  });
-
-  console.log('removing the following toilet from the page:', toiletId);
-}
-
 function handleDelete(context) {
-   var toiletId = $('.pure').data('toilet-id');
-   console.log(toiletId, " toilet id is on left");
-
-  $.ajax({
-    method: 'DELETE',
-    url: '/api/toilets/' + toiletId,
-    success: renderNew,
-    error: deleteError
-  });
 
   console.log('removing the following toilet from the page:', toiletId);
 }
 
-  $(".pure-button").click(function(){
-     $(".map").toggle( "fade" );
+  $(this).click(function(e){
+    if (e.target.name == "update")
      $(".fixedMap").toggle( "fade" );
-     $(".formField").css("display", "block");
+     $(".formFieldUpdate").css("display", "block");
   });
+
+  $(this).click(function(e){
+    if (e.target.name == "delete")
+     handleDelete(this);
+    });
 
 
 
@@ -121,8 +95,21 @@ $("#submitButton").click(function(data){
     error: postError
 
   });
+});
+
+$("#updateSubmit").click(function(data){
+  var toiletId = $('#updateButton').data('toilet-id');
+  console.log(toiletId, " toilet id is on left");
+
+  $.ajax({
+    method: 'PUT',
+    url: '/api/toilets/' + toiletId,
+    success: renderNew,
+    error: deleteError
+  });
 
 });
+
 function deleteError(data) {
   console.log(data + "error in ajax delete");
 }
@@ -160,10 +147,8 @@ function postError (data){
     } else {
       console.log("No address on this button");
     }
-
-
-    //  zoomVal = 15; I hoped to change zoom value on click
   });
+
 
 
 function geocodeAddress(geocoder, resultsMap) {
