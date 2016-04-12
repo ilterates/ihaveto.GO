@@ -70,6 +70,7 @@ function renderNew(data) {
        handleDelete(this);
     });
 function handleDelete(context) {
+    tempId = context;
     var toiletId = $('#delButton').data('toilet-id');
     console.log(toiletId, " toilet id is on left");
 
@@ -124,8 +125,11 @@ $("#submitButton").click(function(data){
 });
 
 $("#updateButton").click(function(e){
-  var toiletId = tempId.data('toilet-id');
-  console.log(toiletId);
+  console.log(e, "E");
+  valueCheat(tempId);
+  function valueCheat(){
+    tempId = $('#delButton').data('toilet-id');
+  }
 
   $.ajax({
     method: 'PUT',
