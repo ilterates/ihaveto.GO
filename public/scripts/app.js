@@ -7,9 +7,6 @@ console.log("WE ARE ALIVE");
    var toiletArray = [];
    var geocoder, map,tempId;
 
-
-
-
    // GET
 $.ajax ({
   method: "GET",
@@ -55,9 +52,9 @@ function renderNew(data) {
     success: reRender
   });
   function reRender(data){
-    console.log(data);
+  //  console.log(data);
     toiletHtml = template({toilets:data});
-    console.log(toiletHtml);
+    //console.log(toiletHtml);
     $(".list-group-item").empty();
     $(".list-group-item").append(toiletHtml);
     $(".formField").css("display", "none");
@@ -65,10 +62,7 @@ function renderNew(data) {
 
   }
 }
-    $("#delButton").click(function (){
-       console.log("clicked del button");
-       handleDelete(this);
-    });
+
 function handleDelete(context) {
     tempId = context;
     var toiletId = $('#delButton').data('toilet-id');
@@ -125,19 +119,24 @@ $("#submitButton").click(function(data){
 });
 
 $("#updateButton").click(function(e){
-  console.log(e, "E");
-  valueCheat(tempId);
+  e.preventDefault();
+  //console.log(e, "E");
+  var toiletId = $('#delButton').data('toilet-id');
+  valueCheat(toiletId);
   function valueCheat(){
-    tempId = $('#delButton').data('toilet-id');
-  }
-
+    // tempId = $('#delButton').data('toilet-id');
+    // var toiletId = $('#delButton').data('toilet-id');
+    console.log(toiletId);
+    var formData = $("#updateForm").serialize();
+    console.log(formData);
   $.ajax({
     method: 'PUT',
-    url: '/api/toilets/' + tempId,
-    data:$("#updateForm").serialize(),
+    url: '/api/toilets/' + toiletId,
+    data:formData,
     success: renderNew,
     error: updateError
   });
+}
 
 });
 function updateError(data) {
