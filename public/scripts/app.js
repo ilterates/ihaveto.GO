@@ -120,7 +120,8 @@ $("#submitButton").click(function(data){
 
 $("#updateButton").click(function(e){
   e.preventDefault();
-  //console.log(e, "E");
+$(".fixedMap").toggle( "fade" );
+$("#updateForm").css("display", "none");
   var toiletId = $('#delButton').data('toilet-id');
   valueCheat(toiletId);
   function valueCheat(){

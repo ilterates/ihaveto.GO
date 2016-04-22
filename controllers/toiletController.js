@@ -53,19 +53,8 @@ function destroy(req, res) {
 }
 
 function update(req, res) {
-  console.log(req.body, "req body here ------");
-  // var newRating = new db.Rating(req.body.rated);
-  //
-  //
-  // console.log(newRating, "NEW RATING HERE OK?");
-  // newRating.save(function (err, savedRating){
-  //   if (err){
-  //    console.log("error", err);
-  //  } else {
 
       db.Toilet.findById(req.params.toiletId, function(err, foundToilet) {
-        console.log(foundToilet,"<--- found toilet");
-        console.log(req.body.rating, " req.body.rating");
         if(err) { console.log('toiletController.update error', err); }
         foundToilet.Name = req.body.name;
         foundToilet.StreetNo = req.body.StreetNo;
@@ -76,19 +65,12 @@ function update(req, res) {
         foundToilet.rating = [{ rated: req.body.rating}];
         foundToilet.save(function(err, savedToilet) {
           if(err) { console.log('saving altered toilet failed'); }
-          console.log("SUP", savedToilet);
           res.json(savedToilet);
         });
-    //   });
-    // }
+
  });
 }
 
-// rating:[{
-//   rated: req.body.rating
-// }]
-
-// export public methods here
 module.exports = {
   index: index,
   create: create,
