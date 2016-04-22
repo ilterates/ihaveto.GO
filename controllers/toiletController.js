@@ -12,6 +12,12 @@ function index(req, res) {
 }
 
 function create(req, res) {
+  var rating = req.body.rating;
+  if (rating > 5) {
+    rating = 5;
+  } else if ( rating  < 1){
+    rating = 1;
+  }
   console.log(req.body);
  var newToilet = new db.Toilet ({
    Name: req.body.name,
@@ -21,7 +27,7 @@ function create(req, res) {
    State: req.body.State,
    Zip: req.body.Zip,
    rating:[{
-     rated: req.body.rating
+     rated: rating
    }]
  });
  newToilet.save(function (err, toilet){
@@ -53,20 +59,25 @@ function destroy(req, res) {
 }
 
 function update(req, res) {
-
-      db.Toilet.findById(req.params.toiletId, function(err, foundToilet) {
-        if(err) { console.log('toiletController.update error', err); }
-        foundToilet.Name = req.body.name;
-        foundToilet.StreetNo = req.body.StreetNo;
-        foundToilet.StreetName = req.body.StreetName;
-        foundToilet.City = req.body.City;
-        foundToilet.State = req.body.State;
-        foundToilet.Zip = req.body.Zip;
-        foundToilet.rating = [{ rated: req.body.rating}];
-        foundToilet.save(function(err, savedToilet) {
-          if(err) { console.log('saving altered toilet failed'); }
-          res.json(savedToilet);
-        });
+  var rating = req.body.rating;
+  if (rating > 5) {
+    rating = 5;
+  } else if ( rating  < 1){
+    rating = 1;
+  }
+  db.Toilet.findById(req.params.toiletId, function(err, foundToilet) {
+    if(err) { console.log('toiletController.update error', err); }
+    foundToilet.Name = req.body.name;
+    foundToilet.StreetNo = req.body.StreetNo;
+    foundToilet.StreetName = req.body.StreetName;
+    foundToilet.City = req.body.City;
+    foundToilet.State = req.body.State;
+    foundToilet.Zip = req.body.Zip;
+    foundToilet.rating = [{ rated: rating}];
+    foundToilet.save(function(err, savedToilet) {
+      if(err) { console.log('saving altered toilet failed'); }
+      res.json(savedToilet);
+    });
 
  });
 }
