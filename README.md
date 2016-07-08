@@ -11,7 +11,7 @@ This was my first big project at General Assembly. I wanted to challenge myself 
 
 ## Technologies Used
 
-What technologies did you use to develop this project? (bullet points)
+What technologies did you use to develop this project?
 * Backend
   * Node.js
   * Express
@@ -28,7 +28,7 @@ What technologies did you use to develop this project? (bullet points)
   * jqueryUI
   * Google Maps API
   * Google Geocoding API
-  * Handlebars (Relationship status : complicated)
+  * Handlebars
 
 
 ## Existing Features
