@@ -7,7 +7,7 @@
 
 I have to poo helps you avoid stinky bathrooms or help you find bathrooms when you need one.
 
-TO BE POSTED --
+This was my first big project at General Assembly. I wanted to challenge myself with using API's as well as making my class-mates laugh. Both challenges were succesful!
 
 ## Technologies Used
 
